@@ -6,11 +6,32 @@ import Col from "react-bootstrap/Col";
 import "./App.css";
 import logo from "./logo.svg";
 import Image from "react-bootstrap/Image";
+import React, { useEffect, useState } from "react";
+const axios = require("axios");
+
+// const options = {
+//   method: "GET",
+//   url: "https://bloomberg-market-and-financial-news.p.rapidapi.com/news/list",
+//   params: { id: "markets" },
+//   headers: {
+//     "X-RapidAPI-Key": "pOKUOxI3ExmshPcZFodnG3oD7SPjp1rBK15jsnjQKv5myOvwDb",
+//     "X-RapidAPI-Host": "bloomberg-market-and-financial-news.p.rapidapi.com",
+//   },
+// };
+
+// axios
+//   .request(options)
+//   .then(function (response) {
+//     console.log(response.data);
+//   })
+//   .catch(function (error) {
+//     console.error(error);
+//   });
 
 function App() {
   return (
     <div id="root">
-      <div class=".nav">
+      <div className=".nav">
         <Navbar bg="red" variant="dark">
           <Navbar.Brand>
             <img src={logo} width="40px" height="40px" margin="30px"></img>{" "}
@@ -22,7 +43,7 @@ function App() {
         <Row fluid>
           <Col md="2">
             <Image
-              class="profile_pic"
+              className="profile_pic"
               src="https://kellenbavisbucket.s3.amazonaws.com/profile_picture.jpg"
               width="300px"
               alt="Profile picture"
@@ -50,8 +71,12 @@ function App() {
           </Col>
         </Row>
       </Container>
+      {/* {typeof data === "undefined" ? (
+        <p>undefined</p>
+      ) : (
+        <p>{JSON.stringify(data)}</p>
+      )} */}
     </div>
   );
 }
-
 export default App;
