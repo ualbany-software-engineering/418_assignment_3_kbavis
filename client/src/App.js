@@ -7,28 +7,24 @@ import "./App.css";
 import logo from "./logo.svg";
 import Image from "react-bootstrap/Image";
 import React, { useEffect, useState } from "react";
-const axios = require("axios");
-
-// const options = {
-//   method: "GET",
-//   url: "https://bloomberg-market-and-financial-news.p.rapidapi.com/news/list",
-//   params: { id: "markets" },
-//   headers: {
-//     "X-RapidAPI-Key": "pOKUOxI3ExmshPcZFodnG3oD7SPjp1rBK15jsnjQKv5myOvwDb",
-//     "X-RapidAPI-Host": "bloomberg-market-and-financial-news.p.rapidapi.com",
-//   },
-// };
-
-// axios
-//   .request(options)
-//   .then(function (response) {
-//     console.log(response.data);
-//   })
-//   .catch(function (error) {
-//     console.error(error);
-//   });
+import UserDetails from "../src/components/UserDetails";
 
 function App() {
+  const [users, setUsers] = useState(null);
+
+  useEffect(() => {
+    const fetchUsers = async () => {
+      const response = await fetch("http://localhost:3001/users");
+      const json = await response.json();
+
+      if (response.ok) {
+        setUsers(json);
+      }
+    };
+
+    fetchUsers();
+  }, []);
+
   return (
     <div id="root">
       <div className=".nav">
@@ -49,6 +45,7 @@ function App() {
               alt="Profile picture"
             ></Image>
           </Col>
+          <Col xs="2"></Col>
           <Col md="6">
             <Row>
               <h1>Kellen Bavis</h1>
@@ -70,12 +67,14 @@ function App() {
             </Row>
           </Col>
         </Row>
+        <br></br> <br></br>
+        <Row className="users">
+          {users &&
+            users.map((user) => (
+              <UserDetails key={user._id} user={user}></UserDetails>
+            ))}
+        </Row>
       </Container>
-      {/* {typeof data === "undefined" ? (
-        <p>undefined</p>
-      ) : (
-        <p>{JSON.stringify(data)}</p>
-      )} */}
     </div>
   );
 }
