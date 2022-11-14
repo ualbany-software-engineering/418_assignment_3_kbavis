@@ -13,8 +13,11 @@ function App() {
   const [users, setUsers] = useState(null);
 
   useEffect(() => {
+    // this was originally - http://localhost:3000/users
     const fetchUsers = async () => {
-      const response = await fetch("http://localhost:3000/users");
+      const response = await fetch(
+        "ec2-54-210-122-111.compute-1.amazonaws.com:3000/users"
+      );
       const json = await response.json();
 
       if (response.ok) {
