@@ -14,7 +14,7 @@ function App() {
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const response = await fetch("http://localhost:3001/users");
+      const response = await fetch("http://localhost:3000/users");
       const json = await response.json();
 
       if (response.ok) {

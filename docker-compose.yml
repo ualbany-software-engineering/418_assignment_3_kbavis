@@ -3,12 +3,11 @@ services:
   server-docker:
     image: server-docker
     ports:
-      - "3001:3001"
+      - "3000:3000"
     depends_on:
       - mongo
     links:
       - mongo
-      # theis link was just added
   mongo:
     image: mongo:latest
     ports:
