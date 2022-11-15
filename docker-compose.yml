@@ -18,6 +18,8 @@ services:
       - "27017:27017"
     volumes:
       - data:/data/db
+    networks:
+      - caddy
   caddy:
     image: caddy:latest
     container_name: caddy
