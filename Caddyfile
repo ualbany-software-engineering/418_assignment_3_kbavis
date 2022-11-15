@@ -1,5 +1,5 @@
 ec2-54-210-122-111.compute-1.amazonaws.com{
-   reverse_proxy 418_assignment_3_kbavis_server-docker_1:443 {
+   reverse_proxy 418_assignment_3_kbavis_server-docker_1:3000 {
       header_down Strict-Transport-Security max-age=31536000;
    }
 }
