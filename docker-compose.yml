@@ -4,7 +4,6 @@ networks:
 services:
   server-docker:
     image: server-docker
-    container_name: docker-server
     ports:
       - "3000:3000"
     depends_on:
