@@ -1,36 +1,32 @@
-version: "3"
-networks:
-  caddy:
+version: "3.8"
+
 services:
   server-docker:
     image: server-docker
     container_name: server-docker
-    ports:
-      - "3000:3000"
+    # ports:
+    #   - "3000:3000"
     depends_on:
       - mongo
     links:
       - mongo
-    networks:
-      - caddy
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
   mongo:
     image: mongo:latest
     ports:
       - "27017:27017"
     volumes:
       - data:/data/db
-    networks:
-      - caddy
   caddy:
     image: caddy:latest
     container_name: caddy
     restart: unless-stopped
     ports:
-      - 80:80
-      - 443:443
+      - "80:80"
     volumes:
       - $PWD/Caddyfile:/etc/caddy/Caddyfile
-      - $PWD/site:/srv
       - caddy_data:/data
       - caddy_config:/config
     networks:
@@ -39,4 +35,3 @@ volumes:
   caddy_data:
   caddy_config:
   data:
-    driver: local
