@@ -1,4 +1,4 @@
-ec2-54-210-122-111.compute-1.amazonaws.com  
+https://ec2-54-210-122-111.compute-1.amazonaws.com
 {
    reverse_proxy server-docker-1:3000; 
 }
