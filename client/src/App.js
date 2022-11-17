@@ -16,7 +16,7 @@ function App() {
     // this was originally - http://localhost:3000/users
     const fetchUsers = async () => {
       const response = await fetch(
-        "http://ec2-54-210-122-111.compute-1.amazonaws.com:3000/users"
+        "http://ec2-54-210-122-111.compute-1.amazonaws.com/users"
       );
       const json = await response.json();
 
